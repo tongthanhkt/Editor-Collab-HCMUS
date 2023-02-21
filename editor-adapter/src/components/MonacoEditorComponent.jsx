@@ -1,7 +1,9 @@
 import React from "react";
 import Editor from "@monaco-editor/react";
 
-const MonacoEditorComponent = () => {
+const MonacoEditorComponent = ({ handleSaveValue }) => {
+  const editorRef = React.useRef(null);
+
   function handleEditorChange(value, event) {
     // here is the current value
   }
@@ -9,6 +11,7 @@ const MonacoEditorComponent = () => {
   function handleEditorDidMount(editor, monaco) {
     console.log("onMount: the editor instance:", editor);
     console.log("onMount: the monaco instance:", monaco);
+    editorRef.current = editor;
   }
 
   function handleEditorWillMount(monaco) {
@@ -21,15 +24,21 @@ const MonacoEditorComponent = () => {
   }
 
   return (
-    <Editor
-      height="50vh"
-      defaultLanguage="javascript"
-      defaultValue="// some comment"
-      onChange={handleEditorChange}
-      onMount={handleEditorDidMount}
-      beforeMount={handleEditorWillMount}
-      onValidate={handleEditorValidation}
-    />
+    <>
+      <button onClick={() => handleSaveValue(editorRef.current.getValue())}>
+        Save
+      </button>
+      <Editor
+        height="50vh"
+        width="80vw"
+        defaultLanguage="javascript"
+        defaultValue="// some comment"
+        onChange={handleEditorChange}
+        onMount={handleEditorDidMount}
+        beforeMount={handleEditorWillMount}
+        onValidate={handleEditorValidation}
+      />
+    </>
   );
 };
 

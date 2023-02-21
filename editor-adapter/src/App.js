@@ -1,5 +1,5 @@
 import "./App.css";
-import MonacoEditorComponent from "./components/MonacoEditorComponent";
+import EditorAdapter from "./components/EditorAdapter";
 // import CodeMirrorEditorComponent from "./components/CodeMirrorEditorComponent";
 // import AceEditorComponent from "./components/AceEditorComponent";
 
@@ -10,7 +10,8 @@ function App() {
         <h1>Editor</h1>
 
         {/* Editor here... */}
-        <MonacoEditorComponent />
+        <EditorAdapter />
+
         {/* <CodeMirrorEditorComponent /> */}
         {/* <AceEditorComponent /> */}
       </header>
