@@ -20,16 +20,16 @@ function onChange(newValue) {
   console.log("change", newValue);
 }
 /*----------------------------------------------------------------------------->*/
-function AceEditorComponent() {
+function AceEditorComponent({height,width, defaultValue, defaultLanguage}) {
     return (
         <div>
              <AceEditor
         placeholder="Placeholder Text"
-        mode="javascript"
-        theme="monokai"
+        mode={defaultLanguage}
+        theme="dracula"
         name="blah2"
-        height='400px'
-        width='600px'
+        height={height}
+        width={width}
         fontSize={20}
         showPrintMargin={true}
         showGutter={true}

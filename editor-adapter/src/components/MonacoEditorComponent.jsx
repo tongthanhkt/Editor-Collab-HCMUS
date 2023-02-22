@@ -1,7 +1,7 @@
 import React from "react";
 import Editor from "@monaco-editor/react";
 
-const MonacoEditorComponent = ({ handleSaveValue }) => {
+const MonacoEditorComponent = ({ handleSaveValue, height,width, defaultValue, defaultLanguage }) => {
   const editorRef = React.useRef(null);
 
   function handleEditorChange(value, event) {
@@ -29,10 +29,11 @@ const MonacoEditorComponent = ({ handleSaveValue }) => {
         Save
       </button>
       <Editor
-        height="50vh"
-        width="80vw"
-        defaultLanguage="javascript"
-        defaultValue="// some comment"
+        theme="dark"
+        height={height}
+        width={width}
+        defaultLanguage={defaultLanguage}
+        defaultValue={defaultValue}
         onChange={handleEditorChange}
         onMount={handleEditorDidMount}
         beforeMount={handleEditorWillMount}
