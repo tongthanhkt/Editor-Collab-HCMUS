@@ -1,5 +1,7 @@
 import React from "react";
 import MonacoEditorComponent from "./MonacoEditorComponent";
+import AceEditorComponent from "./AceEditorComponent";
+import CodeMirrorEditorComponent from "./CodeMirrorEditorComponent";
 
 const EditorAdapter = () => {
   const [value, setValue] = React.useState(undefined);
@@ -16,11 +18,20 @@ const EditorAdapter = () => {
   }, [value]);
 
   return (
-    <div>
+    <>
+      {/* Monaco */}
       <MonacoEditorComponent
         handleSaveValue={(data) => handleSaveValue(data)}
       />
-    </div>
+
+      {/* Ace */}
+      {/* <AceEditorComponent handleSaveValue={(data) => handleSaveValue(data)} /> */}
+
+      {/* Code mirror */}
+      {/* <CodeMirrorEditorComponent
+        handleSaveValue={(data) => handleSaveValue(data)}
+      /> */}
+    </>
   );
 };
 
