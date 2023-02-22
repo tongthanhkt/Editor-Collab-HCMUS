@@ -85,19 +85,15 @@ export default function CodeMirrorEditorComponent({handleSaveValue,height,width,
           rectangularSelection: true,
           highlightActiveLine: true,
           highlightActiveLineGutter: false,
-          closeBrackets: false
-          
-          
+          closeBrackets: false,
         }}
-        
-        //theme={androidstudio}
-      />
+      /> */}
       <CodeMirror
         value="console.log('hello world!');"
         height="200px"
         extensions={[javascript({ jsx: true })]}
         onChange={(value, viewUpdate) => {
-          console.log("value:", value);
+          setValue(value);
         }}
       />
     </div>

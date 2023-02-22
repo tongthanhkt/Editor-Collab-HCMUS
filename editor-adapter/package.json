@@ -3,14 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@codemirror/lang-javascript": "^6.1.4",
+=======
+    "@codemirror/lang-cpp": "^6.0.2",
+>>>>>>> 4050f8da8946633a5451d5e703c8cd6807944b8b
     "@monaco-editor/react": "^4.4.6",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@uiw/codemirror-extensions-langs": "^4.19.9",
+<<<<<<< HEAD
     "@uiw/codemirror-themes-all": "^4.19.9",
     "@uiw/react-codemirror": "^4.19.9",
+=======
+    "@uiw/codemirror-extensions-mentions": "^4.19.9",
+    "@uiw/codemirror-theme-okaidia": "^4.19.9",
+    "@uiw/react-codemirror": "^4.19.9",
+    "ace-builds": "^1.15.2",
+>>>>>>> 4050f8da8946633a5451d5e703c8cd6807944b8b
     "react": "^18.2.0",
     "react-ace": "^10.1.0",
     "react-dom": "^18.2.0",
