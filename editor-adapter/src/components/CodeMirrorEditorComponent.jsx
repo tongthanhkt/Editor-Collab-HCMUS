@@ -1,11 +1,11 @@
 import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { javascript } from "@codemirror/lang-javascript";
-import { loadLanguage } from '@uiw/codemirror-extensions-langs';
+// import { javascript } from "@codemirror/lang-javascript";
+import { loadLanguage } from "@uiw/codemirror-extensions-langs";
 //import { cpp } from "@codemirror/lang-cpp";
 // import { langs } from '@uiw/codemirror-extensions-langs';
 //import { okaidia } from '@uiw/codemirror-theme-okaidia';
- import { dracula } from "@uiw/codemirror-themes-all";
+import { dracula } from "@uiw/codemirror-themes-all";
 // import { githubDark } from "@uiw/codemirror-themes-all";
 //import { createTheme } from '@uiw/codemirror-themes';
 //import { tags as t } from '@lezer/highlight';
@@ -51,27 +51,30 @@ import { loadLanguage } from '@uiw/codemirror-extensions-langs';
 //   ],
 // });
 
-export default function CodeMirrorEditorComponent({handleSaveValue,height,width,language, defaultValue}) {
-  const editorRef = React.useRef(null);
-  const onChange = React.useCallback((value, viewUpdate) => {
-    console.log("value:", value);
-  }, []);
+export default function CodeMirrorEditorComponent({
+  handleSaveValue,
+  height,
+  width,
+  defaultLanguage,
+  defaultValue,
+}) {
+  const [value, setValue] = React.useState(defaultValue);
+
   function handleEditorChange(value, event) {
     // here is the current value
+    setValue(value);
   }
 
   return (
     <div>
-      <button onClick={() => handleSaveValue(editorRef.current.getValue())}>
-        Save
-      </button>
+      <button onClick={() => handleSaveValue(value)}>Save</button>
       <CodeMirror
         value={defaultValue}
         height={height}
         width={width}
         theme={dracula}
-        editable = {true}
-        extensions={[loadLanguage(language)]}
+        editable={true}
+        extensions={[loadLanguage(defaultLanguage)]}
         onChange={handleEditorChange}
         basicSetup={{
           foldGutter: false,
@@ -86,14 +89,6 @@ export default function CodeMirrorEditorComponent({handleSaveValue,height,width,
           highlightActiveLine: true,
           highlightActiveLineGutter: false,
           closeBrackets: false,
-        }}
-      /> */}
-      <CodeMirror
-        value="console.log('hello world!');"
-        height="200px"
-        extensions={[javascript({ jsx: true })]}
-        onChange={(value, viewUpdate) => {
-          setValue(value);
         }}
       />
     </div>

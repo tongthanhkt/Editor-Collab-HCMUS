@@ -1,14 +1,20 @@
 import React from "react";
 import MonacoEditorComponent from "./MonacoEditorComponent";
-import CodeMirrorEditorComponent from "./CodeMirrorEditorComponent"
+import CodeMirrorEditorComponent from "./CodeMirrorEditorComponent";
 import AceEditorComponent from "./AceEditorComponent";
+
+const dbData = `console.log('Load from db')`;
+
 const EditorAdapter = () => {
+  // Value get from editor
   const [value, setValue] = React.useState(undefined);
+
+  // Editor props
   const [height, setHeight] = React.useState("50vh");
   const [width, setWith] = React.useState("80vw");
   const [language, setLanguage] = React.useState("javascript");
-  const [theme, setTheme] = React.useState("dracula");
-  const [defaultValue, setDefaultValue] = React.useState("// Default code editor");
+  const [defaultValue, setDefaultValue] = React.useState(dbData);
+
   function handleSaveValue(data) {
     // Data get from 3rd party component
     setValue(data);
@@ -22,27 +28,31 @@ const EditorAdapter = () => {
 
   return (
     <div>
-      {/* <MonacoEditorComponent
+      {/* Editor goes here... */}
+      <MonacoEditorComponent
+        defaultValue={defaultValue}
         defaultLanguage={language}
-        height = {height}
-        width = {width}
-        handleSaveValue={(data) => handleSaveValue(data)}
-
-      /> */}
-      {/* <AceEditorComponent 
-        defaultLanguage={language} 
         height={height}
         width={width}
-
-      /> */}
-      <CodeMirrorEditorComponent 
-        height = {height}
-        width = {width}
-        language = {language}
-        defaultValue = {defaultValue}
         handleSaveValue={(data) => handleSaveValue(data)}
-        theme={theme}
-        />
+      />
+
+      {/* <AceEditorComponent
+        defaultValue={defaultValue}
+        defaultLanguage={language}
+        height={height}
+        width={width}
+        handleSaveValue={(data) => handleSaveValue(data)}
+      /> */}
+
+      {/* <CodeMirrorEditorComponent
+        height={height}
+        width={width}
+        language={language}
+        defaultValue={defaultValue}
+        defaultLanguage={language}
+        handleSaveValue={(data) => handleSaveValue(data)}
+      /> */}
     </div>
   );
 };

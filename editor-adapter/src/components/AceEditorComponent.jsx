@@ -17,13 +17,26 @@ import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 /*----------------------------------------------------------------------------->*/
-function AceEditorComponent({height,width, defaultValue, defaultLanguage}) {
-    return (
-        <div>
-             <AceEditor
+function AceEditorComponent({
+  handleSaveValue,
+  height,
+  width,
+  defaultValue,
+  defaultLanguage,
+}) {
+  const editorRef = React.useRef(null);
+
+  return (
+    <div>
+      <button
+        onClick={() => handleSaveValue(editorRef.current.editor.getValue())}
+      >
+        Save
+      </button>
+      <AceEditor
         placeholder="Placeholder Text"
         mode={defaultLanguage}
-        theme="dracula"
+        theme="github"
         name="blah2"
         height={height}
         width={width}
@@ -31,7 +44,6 @@ function AceEditorComponent({height,width, defaultValue, defaultLanguage}) {
         showPrintMargin={true}
         showGutter={true}
         highlightActiveLine={true}
-        value={`console.log("I'm loaded")`}
         enableBasicAutocompletion={true}
         enableLiveAutocompletion={true}
         setOptions={{
@@ -41,6 +53,7 @@ function AceEditorComponent({height,width, defaultValue, defaultLanguage}) {
           showLineNumbers: true,
           tabSize: 4,
         }}
+        defaultValue={defaultValue}
         ref={editorRef}
       />
     </div>
